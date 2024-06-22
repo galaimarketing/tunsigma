@@ -54,7 +54,7 @@ ARG PB_VERSION=0.21.3
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /tunsigma/pb
 
-WORKDIR /eCourse/ui
+WORKDIR /tunsigma/ui
 
 RUN sed -i 's/^VITE_PROD_PB_URL=.*/VITE_PROD_PB_URL=http:\/\/127.0.0.1:8090/' .env
 RUN npm install
