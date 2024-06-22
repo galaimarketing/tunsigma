@@ -1,34 +1,3 @@
-<p align="center">
-    <a href="https://ecourse.pockethost.io/" target="_blank" rel="noopener">
-        <img src="https://i.ibb.co/Sx7YmY6/ecourse.jpg" alt="eCourse - My Courses" />
-    </a>
-</p>
-
-eCourse is a self-hosted SPA designed to simplify course creation and management, some of the features include:
-
-- ability to create video and text based content
-- ability to assign courses to users
-- ability to track users progress
-
-[Demo](https://ecourse.pockethost.io/)
-
-Use the following credentials for testing the demo:
-
-**Username:** `ilyas`  
-**Password:** `ecourse123`
-
-## Tech Stack
-
-**UI Framework** - [Svelte](https://svelte.dev/)
-
-**CSS** - [TailwindCSS](https://tailwindcss.com/)
-
-**Icons** - [Iconify](https://iconify.design/)
-
-**Backend** - [PocketBase](https://pocketbase.io/)
-
-**Hosting** - [PocketHost](https://pockethost.io/)
-
 ## Getting Started
 
 Get started by running the project locally, simply follow these steps:
@@ -79,22 +48,22 @@ FROM node:20.11.1-buster
 
 WORKDIR /
 
-RUN git clone https://github.com/Ilyas-Codes/eCourse.git
+RUN git clone https://github.com/galaimarketing/tunsigma.git
 
 ARG PB_VERSION=0.21.3
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
-RUN unzip /tmp/pb.zip -d /eCourse/pb
+RUN unzip /tmp/pb.zip -d /tunsigma/pb
 
 WORKDIR /eCourse/ui
 
 RUN sed -i 's/^VITE_PROD_PB_URL=.*/VITE_PROD_PB_URL=http:\/\/127.0.0.1:8090/' .env
 RUN npm install
 RUN npm run build
-RUN mv dist/* /eCourse/pb/pb_public
+RUN mv dist/* /tunsigma/pb/pb_public
 
 EXPOSE 8090
 
-CMD ["/eCourse/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
+CMD ["/tunsigma/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
 ```
 
 ## Feedback & Suggestions
